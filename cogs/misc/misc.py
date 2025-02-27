@@ -9,7 +9,7 @@ class Misc(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    
+
     @commands.command()
     async def alert(self, ctx, user: discord.User,*, content):
         print(f"Alert called by user {user} with content {content}")
@@ -47,7 +47,21 @@ class Misc(commands.Cog):
         #except discord.Forbidden:
         #    await ctx.send("Não tenho permissão para banir esse usuário")
 
+    @commands.command()
+    async def tiraohamiltondacallurgente(self, ctx):
+        guild = ctx.guild
+        #ids_marotti = [1189609141854027876, 1255676032501940384]
+        ids_marotti = [229301250322071554]
 
+        for id in ids_marotti:
+            marotti = guild.get_member(id)
+            if (marotti.voice):
+                channel = marotti.voice.channel
+                vc = await channel.connect()
+                await marotti.move_to(None)
+                await vc.disconnect()
+            else:
+                await ctx.send("Marotti não tá na call.")
 
 
 async def setup(bot):
