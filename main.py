@@ -12,7 +12,7 @@ async def on_ready():
     print(f'Bot Online')
     
     channel = bot.get_channel(892195200984809533)
-    await channel.send("tira o hamilton da call urgente")
+    #await channel.send("tira o hamilton da call urgente")
 
     await bot.load_extension("cogs.misc.misc")
     print("cog carregada")

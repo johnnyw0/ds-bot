@@ -50,19 +50,28 @@ class Misc(commands.Cog):
     @commands.command()
     async def tiraohamiltondacallurgente(self, ctx):
         guild = ctx.guild
-        #ids_marotti = [1189609141854027876, 1255676032501940384]
-        ids_marotti = [229301250322071554]
+        ids_marotti = [1189609141854027876, 1255676032501940384]
+        #ids_marotti = [229301250322071554]
 
         for id in ids_marotti:
             marotti = guild.get_member(id)
             if (marotti.voice):
                 channel = marotti.voice.channel
                 vc = await channel.connect()
-                await marotti.move_to(None)
+                time.sleep(30)
+                #await marotti.move_to(None)
                 await vc.disconnect()
             else:
                 await ctx.send("Marotti não tá na call.")
 
+
+    @commands.command()
+    async def deletacall(self, ctx):
+        guild = ctx.guild
+        canais = guild.voice_channels
+        await ctx.send("Deletando canal")
+        canal_escolhido = random.choice(canais)
+        await canal_escolhido.delete()
 
 async def setup(bot):
     print("carregando cog no bot\n")
